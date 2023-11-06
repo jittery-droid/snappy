@@ -36,6 +36,12 @@ var snapCmd = &cobra.Command{
 		for _, p := range podsList {
 			fields := strings.Fields(p)
 			fmt.Println(fields)
+
+			if len(fields) < 4 {
+				fmt.Println("no pods available")
+				return nil
+			}
+
 			if fields[3] == statusRunning {
 				podName = fields[1]
 				break
