@@ -2,7 +2,7 @@ package root
 
 import (
 	"github.com/jittery-droid/snappy/cmd/kube"
-
+	"github.com/jittery-droid/snappy/cmd/snap"
 	"github.com/spf13/cobra"
 )
 
@@ -17,5 +17,9 @@ func Execute() error {
 }
 
 func init() {
-	rootCmd.AddCommand(kube.Cmds()...)
+	cmds := make([]*cobra.Command, 0)
+	cmds = append(cmds, snap.Cmds()...)
+	cmds = append(cmds, kube.Cmds()...)
+
+	rootCmd.AddCommand(cmds...)
 }
