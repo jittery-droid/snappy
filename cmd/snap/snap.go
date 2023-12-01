@@ -35,6 +35,11 @@ var snapCmd = &cobra.Command{
 		var podName string
 		for _, p := range podsList {
 			fields := strings.Fields(p)
+			if len(fields) == 0 {
+				continue
+			}
+
+			fmt.Println(len(fields))
 			fmt.Println(fields)
 
 			if len(fields) < 4 {
